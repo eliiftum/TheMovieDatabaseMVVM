@@ -17,6 +17,8 @@ class HomeViewModel{
     var selectedMovie: MovieResult?
     var delegate: HomeViewBusinessLogic?
     
+    var selectedId: Int?
+    
     func searchMovies(query: String) {
         
         NetworkManager.shared.callService(with: .search(query: query)) { [weak self] (response: Result<Search, Error>) in

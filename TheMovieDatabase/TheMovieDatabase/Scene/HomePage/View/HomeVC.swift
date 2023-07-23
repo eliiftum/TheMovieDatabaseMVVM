@@ -9,22 +9,25 @@ import UIKit
 
 class HomeVC: UIViewController{
    
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var homeViewModel = HomeViewModel()
-
+    var movieTitle = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        self.title = "Movie Search"
         
         homeViewModel.delegate = self
-        homeViewModel.searchMovies(query: "lord")
+        
     }
-    
 }
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -47,17 +50,17 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let selectedId = homeViewModel.response?.results?[indexPath.row].id {
+            homeViewModel.selectedId = selectedId
             performSegue(withIdentifier: "toDetailsVC", sender: nil)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if segue.identifier == "toDetailVC"{
+        if segue.identifier == "toDetailsVC" {
                
-//               if let destination = segue.destination as? DetailsVC{
-//                   destination.selectedMovie = homeViewModel
-//
-//               }
+               if let destination = segue.destination as? DetailsVC{
+                   destination.selectedId = homeViewModel.selectedId
+               }
            }
        }
     
@@ -80,3 +83,12 @@ extension HomeVC: HomeViewBusinessLogic{
     }
 }
 
+extension HomeVC: UISearchBarDelegate{
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text{
+            homeViewModel.searchMovies(query: text)
+
+        }
+    }
+}

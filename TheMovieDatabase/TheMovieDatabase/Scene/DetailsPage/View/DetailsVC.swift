@@ -14,9 +14,10 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var popularityLabel: UILabel!
-    @IBOutlet weak var averageLabel: UILabel!
+    @IBOutlet weak var averageLbl: UILabel!
     
     var selectedMovie: Search?
+    var selectedId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()

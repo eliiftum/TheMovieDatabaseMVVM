@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--HomeVC-->
+        <!--Movie Search-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="TheMovieDatabase" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,15 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="FQg-va-LP4">
-                                <rect key="frame" x="0.0" y="40" width="393" height="56"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="2yI-ME-GGg">
+                                <rect key="frame" x="0.0" y="108" width="393" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2Vi-AD-I4o"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="mYD-sJ-viO"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="kgF-wk-fol"/>
                                 </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cwP-JH-joe">
-                                <rect key="frame" x="0.0" y="89" width="393" height="763"/>
+                                <rect key="frame" x="0.0" y="178" width="393" height="674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xni-eh-4OB">
                                     <size key="itemSize" width="170" height="170"/>
@@ -89,20 +92,20 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="FQg-va-LP4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FYe-2J-Jeu"/>
-                            <constraint firstItem="FQg-va-LP4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="40" id="FfF-xz-bIW"/>
+                            <constraint firstItem="2yI-ME-GGg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BE0-9V-jPR"/>
                             <constraint firstItem="cwP-JH-joe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fu8-DC-RRZ"/>
-                            <constraint firstItem="cwP-JH-joe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-14" id="H0q-eH-RZr"/>
                             <constraint firstItem="cwP-JH-joe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="i6j-aD-f9c"/>
-                            <constraint firstAttribute="trailing" secondItem="FQg-va-LP4" secondAttribute="trailing" id="pIA-15-52d"/>
+                            <constraint firstItem="2yI-ME-GGg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="ogF-3R-vyk"/>
+                            <constraint firstItem="2yI-ME-GGg" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="pem-b4-5jv"/>
+                            <constraint firstItem="cwP-JH-joe" firstAttribute="top" secondItem="2yI-ME-GGg" secondAttribute="bottom" constant="20" id="uSy-Tu-Zv8"/>
                             <constraint firstAttribute="bottom" secondItem="cwP-JH-joe" secondAttribute="bottom" id="xxg-27-zDt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="D0K-qs-gyK"/>
+                    <navigationItem key="navigationItem" title="Movie Search" id="D0K-qs-gyK"/>
                     <connections>
                         <outlet property="collectionView" destination="cwP-JH-joe" id="0zS-VA-nHB"/>
-                        <outlet property="searchBar" destination="FQg-va-LP4" id="5e6-bY-ldE"/>
-                        <segue destination="m78-gD-KVO" kind="show" identifier="toDetailsVC" id="zjv-Ys-yew"/>
+                        <outlet property="searchBar" destination="2yI-ME-GGg" id="4tO-hQ-4wn"/>
+                        <segue destination="m78-gD-KVO" kind="show" identifier="toDetailsVC" id="yi7-IE-ihB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -112,7 +115,7 @@
         <!--DetailsVC-->
         <scene sceneID="OhD-3k-okG">
             <objects>
-                <viewController id="m78-gD-KVO" customClass="DetailsVC" sceneMemberID="viewController">
+                <viewController id="m78-gD-KVO" customClass="DetailsVC" customModule="TheMovieDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B70-fB-paN">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,7 +183,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="H5O-Co-V64"/>
                     <connections>
-                        <outlet property="averageLabel" destination="fYj-yq-3Pw" id="3ht-U2-rpd"/>
+                        <outlet property="averageLbl" destination="fYj-yq-3Pw" id="uJj-1Z-VhB"/>
                         <outlet property="descriptionLabel" destination="dyr-06-DeJ" id="g8p-PU-gyl"/>
                         <outlet property="imageView" destination="TZx-T4-H50" id="y0a-bb-GAi"/>
                         <outlet property="movieNameLabel" destination="y8Z-bd-4mh" id="Sbq-Og-vTw"/>
