@@ -14,21 +14,20 @@ class HomeVC: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     
     var homeViewModel = HomeViewModel()
-    var movieTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.delegate = self
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
         self.title = "Movie Search"
         
-        homeViewModel.delegate = self
+        prepareSearchBar()
         
+        initDelegates()
+
     }
 }
+
+//MARK: COLLECTION VIEW PROTOCOLS
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
@@ -71,6 +70,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
 }
 
+//MARK: Home View Business Logic
+
 extension HomeVC: HomeViewBusinessLogic{
     func didFinishGetMovieWithSuccess() {
         DispatchQueue.main.async {
@@ -83,6 +84,8 @@ extension HomeVC: HomeViewBusinessLogic{
     }
 }
 
+//MARK: SEARCHBAR DELEGATES
+
 extension HomeVC: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -90,5 +93,28 @@ extension HomeVC: UISearchBarDelegate{
             homeViewModel.searchMovies(query: text)
 
         }
+    }
+    
+    func prepareSearchBar() {
+        searchBar.isSearchResultsButtonSelected = true
+        searchBar.searchBarStyle = .prominent
+        searchBar.barStyle = .default
+        searchBar.placeholder = "please, type movie name"
+    }
+
+}
+
+//MARK: INIT DELEGATES
+
+extension HomeVC{
+    
+    fileprivate func initDelegates() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        homeViewModel.delegate = self
+        
+        searchBar.delegate = self
+
     }
 }
