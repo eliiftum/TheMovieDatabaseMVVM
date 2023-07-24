@@ -38,10 +38,12 @@ class DetailsVC: UIViewController {
         imageView.kfImage(url: fullImageUrl)
         
         movieNameLabel.text = movieResult?.originalTitle
+        
         descriptionLabel.text = movieResult?.overview
         
         if let popularity = movieResult?.popularity{
-            popularityLabel.text = String(popularity)}
+            popularityLabel.text = String(popularity)
+        }
         
         if let average = movieResult?.voteAverage{
             averageLbl.text = String(average)

@@ -28,7 +28,7 @@
                                 </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cwP-JH-joe">
-                                <rect key="frame" x="0.0" y="178" width="393" height="674"/>
+                                <rect key="frame" x="10" y="178" width="373" height="674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xni-eh-4OB">
                                     <size key="itemSize" width="170" height="170"/>
@@ -93,8 +93,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2yI-ME-GGg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BE0-9V-jPR"/>
-                            <constraint firstItem="cwP-JH-joe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fu8-DC-RRZ"/>
-                            <constraint firstItem="cwP-JH-joe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="i6j-aD-f9c"/>
+                            <constraint firstItem="cwP-JH-joe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Fu8-DC-RRZ"/>
+                            <constraint firstItem="cwP-JH-joe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-10" id="i6j-aD-f9c"/>
                             <constraint firstItem="2yI-ME-GGg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="ogF-3R-vyk"/>
                             <constraint firstItem="2yI-ME-GGg" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="pem-b4-5jv"/>
                             <constraint firstItem="cwP-JH-joe" firstAttribute="top" secondItem="2yI-ME-GGg" secondAttribute="bottom" constant="20" id="uSy-Tu-Zv8"/>
