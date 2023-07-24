@@ -8,22 +8,20 @@
 import Foundation
 import UIKit
 
-class DetailViewModel: UIViewController{
-    
-    var response: [MovieResult]?
-    var delegate: HomeViewBusinessLogic?
+protocol DetailViewBusinessLogic{
+    func didFinishGetMovieWithSuccess(movie: MovieDetails)
+    func didFinishGetMovieWithError(error: Error)
+}
 
+class DetailViewModel {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    var delegate: DetailViewBusinessLogic?
     
     func getMovieDetails(idkey : String) {
-        NetworkManager.shared.callService(with: .details(idKey: idkey)) { [weak self] (response: Result<Search, Error>) in
+        NetworkManager.shared.callService(with: .details(idKey: idkey)) { [weak self] (response: Result<MovieDetails, Error>) in
             switch response{
             case .success(let model):
-                self?.response = model.results
-                self?.delegate?.didFinishGetMovieWithSuccess()
+                self?.delegate?.didFinishGetMovieWithSuccess(movie: model)
             case .failure(let failure):
                 self?.delegate?.didFinishGetMovieWithError(error: failure)
             }

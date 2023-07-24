@@ -18,7 +18,7 @@ class HomeVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Movie Search"
+        self.title = "MOVIES"
         
         prepareSearchBar()
         
@@ -70,7 +70,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
 }
 
-//MARK: Home View Business Logic
+//MARK: HOME VIEW BUSINESS LOGIC
 
 extension HomeVC: HomeViewBusinessLogic{
     func didFinishGetMovieWithSuccess() {
@@ -99,7 +99,7 @@ extension HomeVC: UISearchBarDelegate{
         searchBar.isSearchResultsButtonSelected = true
         searchBar.searchBarStyle = .prominent
         searchBar.barStyle = .default
-        searchBar.placeholder = "please, type movie name"
+        searchBar.placeholder = "please, write movie's name"
     }
 
 }
